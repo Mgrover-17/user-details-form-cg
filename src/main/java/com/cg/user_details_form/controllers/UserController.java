@@ -1,6 +1,6 @@
 package com.cg.user_details_form.controllers;
 
-import com.cg.user_details_form.dto.UserDTO;
+import com.cg.user_details_form.models.User;
 import com.cg.user_details_form.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user-details")
-@SessionAttributes("userDto")
+@SessionAttributes("user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @ModelAttribute("userDto")
-    public UserDTO userDto() {
-        return new UserDTO();
+    @ModelAttribute("user")
+    public User user() {
+        return new User();
     }
 
     @GetMapping("/firstpage")
@@ -25,26 +25,36 @@ public class UserController {
     }
 
     @PostMapping("/firstpage")
-    public String handleFirstPage(@ModelAttribute("userDto") UserDTO userDto,
+    public String handleFirstPage(@ModelAttribute("") User user,
                                   @RequestParam String firstName,
                                   @RequestParam String lastName) {
-        userService.updateFirstLastName(userDto, firstName, lastName);
+        userService.updateFirstLastName(user, firstName, lastName);
+        return "redirect:/user-details/secondpage";
+    }
+    @GetMapping("/secondpage")
+    public String showSecondPage() {
         return "secondPage";
     }
 
     @PostMapping("/secondpage")
-    public String handleSecondPage(@ModelAttribute("userDto") UserDTO userDto,
+    public String handleSecondPage(@ModelAttribute("user") User user,
                                    @RequestParam String email,
                                    @RequestParam String phone) {
-        userService.updateEmailPhone(userDto, email, phone);
+        userService.updateEmailPhone(user, email, phone);
+        return "redirect:/user-details/thirdpage";
+    }
+
+    @GetMapping("/thirdpage")
+    public String showThirdPage() {
         return "thirdPage";
     }
 
+
     @PostMapping("/thirdpage")
-    public String handleThirdPage(@ModelAttribute("userDto") UserDTO userDto,
+    public String handleThirdPage(@ModelAttribute("user") User user,
                                    @RequestParam String city,
                                    @RequestParam String country) {
-        userService.updateCityCountry(userDto, city, country);
+        userService.updateCityCountry(user, city, country);
         return "redirect:/user-details/fourthpage";
     }
 

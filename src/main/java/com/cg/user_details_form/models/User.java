@@ -1,4 +1,4 @@
-package com.cg.user_details_form.dto;
+package com.cg.user_details_form.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
+public class User {
     private String firstName;
     private String lastName;
     private String email;

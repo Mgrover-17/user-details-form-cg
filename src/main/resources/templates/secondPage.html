@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><title>Second Page</title></head>
 <body>
-<p>First Name: <span th:text="${userDto.firstName}"></span></p>
-<p>Last Name: <span th:text="${userDto.lastName}"></span></p>
+<p>First Name: <span th:text="${user.firstName}"></span></p>
+<p>Last Name: <span th:text="${user.lastName}"></span></p>
 <form th:action="@{/user-details/secondpage}" method="post">
     Email: <input type="email" name="email" required><br>
     Phone: <input type="text" name="phone" required><br>

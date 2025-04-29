@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><title>Second Page</title></head>
 <body>
-<p>First Name: <span th:text="${userDto.firstName}"></span></p>
-<p>Last Name: <span th:text="${userDto.lastName}"></span></p>
-<p>Email: <span th:text="${userDto.email}"></span></p>
-<p>Phone: <span th:text="${userDto.phone}"></span></p>
+<p>First Name: <span th:text="${user.firstName}"></span></p>
+<p>Last Name: <span th:text="${user.lastName}"></span></p>
+<p>Email: <span th:text="${user.email}"></span></p>
+<p>Phone: <span th:text="${user.phone}"></span></p>
 <form th:action="@{/user-details/thirdpage}" method="post">
     City: <input type="text" name="city" required><br>
     Country: <input type="text" name="country" required><br>
